@@ -3,7 +3,7 @@ function finalizarTeste() {
   document.getElementById('testeContainer').style.display = 'none';
   document.getElementById('relatorio').style.display = 'block';
 
-  const totalLinhas = myotest.length; // Supondo que 'imagens' seja o array das linhas do teste
+  const totalLinhas = imagens.length; // Supondo que 'imagens' seja o array das linhas do teste
   const linhasLidas = linhaAtual; // Supondo que 'linhaAtual' seja o índice da última linha lida corretamente
 
   // Exibe o resumo do desempenho
