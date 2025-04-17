@@ -148,14 +148,13 @@
       }
     }
 
-    function responder(consegueLer) {
-      if (consegueLer) {
-        linhaAtual++;
-        mostrarLinha();
-      } else {
-        finalizarTeste();
-      }
-    }
+  if (consegueLer) {
+    mostrarLinha();
+    linhaAtual++;
+  } else {
+    finalizarTeste();
+  }
+}
 
     function finalizarTeste() {
       testeContainer.style.display = "none";
