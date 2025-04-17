@@ -70,7 +70,7 @@
   <!-- Teste -->
   <div id="teste-container">
     <p id="pergunta"></p>
-    <img id="linha-img" src="img/img1.jpeg" height="250" width="250">
+    <img id="linha-img" src="myotest/img.jpeg" height="250" width="250">
     <div id="botoes">
       <button onclick="responder(true)">Sim</button>
       <button onclick="responder(false)">Não</button>
@@ -112,7 +112,7 @@
 
   <script>
     const myotest = [
-      "myotest/myotest.jpeg",
+      "myotest/img.jpeg",
       "myotest/img.jpeg",
       "myotest/img.jpeg",
       "myotest/img.jpeg"
@@ -140,8 +140,8 @@
     });
 
     function mostrarLinha() {
-      if (linhaAtual < imagens.length) {
-        linhaImg.src = imagens[linhaAtual];
+      if (linhaAtual < myotest.length) {
+        linhaImg.src = myotest[linhaAtual];
         perguntaTexto.textContent = perguntas[linhaAtual];
       } else {
         finalizarTeste();
@@ -161,7 +161,7 @@
       testeContainer.style.display = "none";
       document.getElementById("relatorio").style.display = "block";
 
-      const totalLinhas = imagens.length;
+      const totalLinhas = myotest.length;
       const linhasLidas = linhaAtual;
 
       document.getElementById('resumoDesempenho').textContent =
