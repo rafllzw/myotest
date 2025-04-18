@@ -134,20 +134,22 @@
     const perguntaTexto = document.getElementById("pergunta");
 
     startButton.addEventListener("click", () => {
-      inicioDiv.style.display = "none";
-      testeContainer.style.display = "block";
-      mostrarLinha();
-    });
+  linhaAtual = 0; // <- isso aqui é essencial!
+  inicioDiv.style.display = "none";
+  testeContainer.style.display = "block";
+  mostrarLinha();
+});
+    
+ function mostrarLinha() {
+  if (linhaAtual < imagens.length) {
+    linhaImg.src = imagens[linhaAtual];
+    perguntaTexto.textContent = perguntas[linhaAtual];
+  } else {
+    finalizarTeste();
+  }
+}
 
-    function mostrarLinha() {
-      if (linhaAtual < myotest.length) {
-        linhaImg.src = myotest[linhaAtual];
-        perguntaTexto.textContent = perguntas[linhaAtual];
-      } else {
-        finalizarTeste();
-      }
-    }
-
+ function responder(consegueLer) {
   if (consegueLer) {
     mostrarLinha();
     linhaAtual++;
