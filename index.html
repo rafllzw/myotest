@@ -126,6 +126,7 @@
     ];
 
     let linhaAtual = 0;
+    let grafico = null;
 
     const startButton = document.getElementById("startButton");
     const inicioDiv = document.getElementById("inicio");
@@ -134,29 +135,29 @@
     const perguntaTexto = document.getElementById("pergunta");
 
     startButton.addEventListener("click", () => {
-  linhaAtual = 0; // <- isso aqui é essencial!
-  inicioDiv.style.display = "none";
-  testeContainer.style.display = "block";
-  mostrarLinha();
-});
-    
- function mostrarLinha() {
-  if (linhaAtual < imagens.length) {
-    linhaImg.src = imagens[linhaAtual];
-    perguntaTexto.textContent = perguntas[linhaAtual];
-  } else {
-    finalizarTeste();
-  }
-}
+      linhaAtual = 0;
+      inicioDiv.style.display = "none";
+      testeContainer.style.display = "block";
+      mostrarLinha();
+    });
 
- function responder(consegueLer) {
-  if (consegueLer) {
-    mostrarLinha();
-    linhaAtual++;
-  } else {
-    finalizarTeste();
-  }
-}
+    function mostrarLinha() {
+      if (linhaAtual < myotest.length) {
+        linhaImg.src = myotest[linhaAtual];
+        perguntaTexto.textContent = perguntas[linhaAtual];
+      } else {
+        finalizarTeste();
+      }
+    }
+
+    function responder(consegueLer) {
+      if (consegueLer) {
+        linhaAtual++;
+        mostrarLinha();
+      } else {
+        finalizarTeste();
+      }
+    }
 
     function finalizarTeste() {
       testeContainer.style.display = "none";
@@ -174,7 +175,10 @@
         "Identificamos possíveis sinais de miopia. Sugerimos agendar uma consulta com um especialista para uma avaliação completa.";
 
       const ctx = document.getElementById('graficoDesempenho').getContext('2d');
-      new Chart(ctx, {
+      if (grafico) {
+        grafico.destroy();
+      }
+      grafico = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: ['Linhas Lidas', 'Linhas Restantes'],
@@ -210,4 +214,3 @@
 
 </body>
 </html>
-
